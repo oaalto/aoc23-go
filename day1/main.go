@@ -4,7 +4,6 @@ import (
 	"aoc23-go/util"
 	"bufio"
 	"fmt"
-	"sync"
 )
 
 type numberParser interface {
@@ -25,13 +24,9 @@ func calculate(input string, numberParser numberParser) {
 	file := util.OpenFile(input)
 	defer util.CloseFile(file)
 
-	wg := &sync.WaitGroup{}
-
 	fileScanner := bufio.NewScanner(file)
 	fileScanner.Split(bufio.ScanLines)
 	for fileScanner.Scan() {
-		wg.Add(1)
 		go numberParser.parse(fileScanner.Text())
 	}
-	wg.Wait()
 }
