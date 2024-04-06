@@ -27,7 +27,7 @@ type numberIndex struct {
 
 type part2Parser int
 
-func (p *part2Parser) parse(line string) {
+func (p *part2Parser) Parse(line string) {
 	numberIndices := make([]numberIndex, 0)
 
 	if index := strings.IndexFunc(line, unicode.IsDigit); index > -1 {

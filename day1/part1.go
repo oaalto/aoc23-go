@@ -7,7 +7,7 @@ import (
 
 type part1Parser int
 
-func (p *part1Parser) parse(line string) {
+func (p *part1Parser) Parse(line string) {
 	firstIndex := strings.IndexFunc(line, unicode.IsDigit)
 	if firstIndex == -1 {
 		return
