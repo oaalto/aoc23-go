@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"util"
 )
 
 type game struct {
@@ -23,11 +24,11 @@ func parseGame(line string) game {
 
 		switch parts[1] {
 		case "red":
-			game.red = parseInt(parts[0])
+			game.red = util.MustParseInt(parts[0])
 		case "green":
-			game.green = parseInt(parts[0])
+			game.green = util.MustParseInt(parts[0])
 		case "blue":
-			game.blue = parseInt(parts[0])
+			game.blue = util.MustParseInt(parts[0])
 		}
 	}
 
@@ -42,15 +43,6 @@ func parseGames(line string) []game {
 	}
 
 	return games
-}
-
-func parseInt(str string) int {
-	i, err := strconv.Atoi(str)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return i
 }
 
 var gameIdRegexp = regexp.MustCompile(`^Game ([0-9]+)`)
