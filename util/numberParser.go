@@ -6,7 +6,7 @@ type NumberParser interface {
 	Parse(string)
 }
 
-func Calculate(input string, numberParser NumberParser) {
+func ProcessFile(input string, numberParser NumberParser) {
 	file := OpenFile(input)
 	defer CloseFile(file)
 
